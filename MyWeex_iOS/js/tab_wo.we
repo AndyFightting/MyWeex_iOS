@@ -2,7 +2,6 @@
     <template>
         <div class = "backView">
             <text class = "line"></text>
-
             <div class = "containerView">
                 <image class = "headImage" resize="cover" src = "{{host + 'images/tmp.png'}}"}/>
                 <div class = "nameView">
@@ -72,10 +71,12 @@
         }
     </style>
     <script>
+       var hostUrl = require('./host.js').url;
         module.exports = {
             data: {
-              host: "http://192.168.12.109:8081/weex_tmp/h5_render/",
-            }
+               host: hostUrl,
+
+            },
         }
     </script>
 </element>
@@ -84,7 +85,7 @@
 <template>
     <div class="backView">
         <tab_title name = "我"></tab_title>
-        <head_cell></head_cell>
+        <head_cell onclick = "headTaped"></head_cell>
         <common_section sections = {{sections}}></common_section>
     </div>
 </template>
@@ -113,6 +114,13 @@
         {'image':'images/icon0.png','name':'设置'},
     ]}
     ]
+        },
+
+     methods:{
+        headTaped:function(){
+
         }
+     }
+
     }
 </script>

@@ -5,8 +5,7 @@
 </template>
 
 <script>
-
-    var host = "http://192.168.12.109:8081/weex_tmp/h5_render/";
+    var host = require('./host.js').url;
 
     var tab_wx = host + "tab_wx.js";
     var tab_txl = host + "tab_txl.js";
@@ -19,7 +18,7 @@
             tabItems: [
                 {
                     index: 0,
-                    title: '微信',
+                    title: '微信ss',
                     titleColor: '#000000',
                     icon: '',
                     image: 'http://gtms01.alicdn.com/tps/i1/TB1qw.hMpXXXXagXXXX9t7RGVXX-46-46.png',

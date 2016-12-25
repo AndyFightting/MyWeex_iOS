@@ -43,9 +43,10 @@
 </style>
 
 <script>
+var hostUrl = require('./host.js').url;
  module.exports = {
    data:{
-      host: "http://192.168.12.109:8081/weex_tmp/h5_render/",
+      host: hostUrl,
    }
  }
 </script>

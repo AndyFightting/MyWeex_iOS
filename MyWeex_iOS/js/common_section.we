@@ -1,0 +1,102 @@
+<element name = "my_row">
+<template>
+  <div class = "rowBackView">
+    <div class = "rowContainer">
+      <image class = "iconImage" src = "{{host + dic.image}}"/>
+      <text class = "rowName">{{dic.name}}</text>
+      <image class = "arrowImage" src = "{{host + 'images/rightArrow.png'}}"></image>
+    </div>
+    <text if= {{showLine}} class = "line"></text>
+  </div>
+</template>
+<style>
+ .rowBackView{
+   background-color:white;
+   height:80;
+ }
+ .rowContainer{
+   flex:1;
+   align-items:center;
+   flex-direction:row;
+ }
+ .rowName{
+   flex:1;
+   font-size: 30;
+ }
+ .iconImage{
+   width:45;
+   height:45;
+   margin-left:30;
+   margin-right:30;
+ }
+  .arrowImage{
+    width:32;
+    height:32;
+    margin-right:30;
+  }
+  
+ .line{
+   margin-left:40;
+   background-color:#e3e1e1;
+   height:1;
+ }
+</style>
+
+<script>
+ module.exports = {
+   data:{
+      host: "http://192.168.12.109:8081/weex_tmp/h5_render/",
+   }
+ }
+</script>
+</element>
+
+<element name= "my_section">
+<template>
+  <div class = "sessionView">
+    <text class = "line"></text>
+    <div repeat = "row in section.array">
+      <my_row dic ={{row}} show-line = {{$index==section.array.length-1?false:true}}></my_row>
+    </div>
+    <text class = "line"></text>
+  </div>
+</template>
+
+<style>
+  .sessionView{
+    margin-top:30;
+    background-color:white;
+  }
+  .line{
+    background-color:#e3e1e1;
+    height:1;
+  }
+  
+</style>
+
+<script>
+  module.exports = {
+  data: {
+      
+  }
+}
+</script>
+</element>
+
+<template>
+  <div>
+    <div repeat = "section in sections">
+       <my_section section = {{section}}></my_section>
+    </div>
+  </div>
+</template>
+<style>
+  
+</style>
+<script>
+ module.exports = {
+  data: {
+  
+  }
+}
+</script>

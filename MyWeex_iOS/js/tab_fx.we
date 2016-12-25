@@ -1,0 +1,36 @@
+<template>
+    <div class = "backView">
+        <tab_title name="发现"></tab_title>
+        <common_section sections = {{sections}}></common_section>
+    </div>
+</template>
+
+<style>
+   .backView{
+        background-color:#efeff4;
+   }
+</style>
+
+<script>
+    module.exports = {
+        data: {
+ sections : [
+    {'array':[
+        {'image':'images/icon0.png','name':'朋友圈'},
+    ]},
+     {'array':[
+        {'image':'images/icon1.png','name':'扫一扫'},
+        {'image':'images/icon3.png','name':'摇一摇'},
+    ]},
+     {'array':[
+        {'image':'images/icon2.png','name':'附近的人'},
+        {'image':'images/icon0.png','name':'漂流瓶'},
+    ]},
+    {'array':[
+        {'image':'images/icon1.png','name':'购物'},
+        {'image':'images/icon3.png','name':'游戏'},
+    ]}
+    ]
+        }
+    }
+</script>

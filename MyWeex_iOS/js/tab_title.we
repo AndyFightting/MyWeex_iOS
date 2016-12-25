@@ -1,0 +1,30 @@
+<template>
+    <div>
+        <div class = "backView">
+            <text class="title">{{name}}</text>
+        </div>
+    </div>
+</template>
+
+<style>
+    .backView {
+        justify-content: flex-end;
+        align-items: center;
+        height:116px;
+        background-color: #333238;
+    }
+    .title {
+        font-size: 34px;
+        color: white;
+        margin-bottom:18px;
+        font-weight: bold;
+    }
+</style>
+
+<script>
+    module.exports = {
+        data: {
+            name: ''
+        }
+    }
+</script>

@@ -7,35 +7,28 @@
  */
 
 #import "AppDelegate.h"
-#import "WXDemoViewController.h"
+#import "ViewController.h"
+#import "WXImgLoaderDefaultImpl.h"
 
-#define MY_URL @"file:///Users/suguiming/Desktop/GithubLocal/MyWeex_iOS/MyWeex_iOS/js/index.js"
 
 @interface AppDelegate ()
 @end
 
 @implementation AppDelegate
 
-#pragma mark
-#pragma mark application
-
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
-{
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions{
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     self.window.backgroundColor = [UIColor whiteColor];
-    
+    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
+
+
     [WXSDKEngine initSDKEnviroment];
+    [WXSDKEngine registerHandler:[WXImgLoaderDefaultImpl new] withProtocol:@protocol(WXImgLoaderProtocol)];
     
-    self.window.rootViewController = [self demoController];
+    self.window.rootViewController = [[ViewController alloc] init];
     [self.window makeKeyAndVisible];
-    
     
     return YES;
 }
 
-- (UIViewController *)demoController{
-    UIViewController *demo = [[WXDemoViewController alloc] init];
-    ((WXDemoViewController *)demo).url = [NSURL URLWithString:MY_URL];
-    return demo;
-}
 @end

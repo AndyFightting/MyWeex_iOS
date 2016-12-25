@@ -1,0 +1,25 @@
+<template>
+    <div>
+        <tab_title name="通讯录"/>
+
+    </div>
+</template>
+
+<style>
+    .backView {
+        height:150;
+        background-color:red;
+    }
+    .text {
+        font-size: 50;
+        margin-top:100;
+    }
+</style>
+
+<script>
+    module.exports = {
+        data: {
+            text: 'Hello World.'
+        }
+    }
+</script>

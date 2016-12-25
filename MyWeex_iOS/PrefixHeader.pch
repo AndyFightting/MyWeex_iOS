@@ -1,0 +1,16 @@
+//
+//  PrefixHeader.pch
+//  MyWeex_iOS
+//
+//  Created by 苏贵明 on 16/12/24.
+//  Copyright © 2016年 苏贵明. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+#define IP_ADDRESS @"192.168.12.109"
+#define HOST [NSString stringWithFormat:@"http://%@:8081/weex_tmp/h5_render/",IP_ADDRESS]
+
+
+#endif /* PrefixHeader_pch */

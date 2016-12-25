@@ -1,15 +1,17 @@
-//
-//  ViewController.h
-//  MyWeex_iOS
-//
-//  Created by 苏贵明 on 16/12/21.
-//  Copyright © 2016年 苏贵明. All rights reserved.
-//
+/**
+ * Created by Weex.
+ * Copyright (c) 2016, Alibaba, Inc. All rights reserved.
+ *
+ * This source code is licensed under the Apache Licence 2.0.
+ * For the full copyright and license information,please view the LICENSE file in the root directory of this source tree.
+ */
 
 #import <UIKit/UIKit.h>
+#import <SRWebSocket.h>
+#import <WeexSDK/WeexSDK.h>
 
 @interface ViewController : UIViewController
-
-
+@property (nonatomic, strong) WXSDKInstance *instance;
+@property (nonatomic, strong) UIView *weexView;
 @end
 

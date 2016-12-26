@@ -24,7 +24,6 @@
     [self renderView];
 }
 
-
 - (void)dealloc{
     [instance destroyInstance];
 }

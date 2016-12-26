@@ -1,0 +1,102 @@
+<template>
+  <div class = "containerView">
+    
+    <div class = "titleBackView">
+      <div class = "leftView" onclick="backTaped">
+        <image class = "backImage" src = "{{host + 'images/back.png'}}"/>
+      </div>
+      
+      <div class = "titleView">
+         <text class = "titleName">{{name}}</text>
+      </div>
+      
+      <div class = "rightView" onclick="rightTitleTaped">
+        <image class = "rightImage" if = "{{(rightName == null && rightImage != null) ? true : false}}" src = "{{host + rightImage}}"/>
+        <text class = "rightName" if = "{{(rightName != null && rightImage==null) ? true : false}}" >{{rightName}}</text>
+      </div>
+      
+    </div>
+  </div>
+</template>
+<style>
+   .containerView{
+     justify-content:flex-end;
+     background-color:#333238;
+     height:116;
+   }
+   .titleBackView{
+     flex-direction:row;
+     height:80;
+   }
+ 
+   .titleView{
+     flex:1;
+     justify-content:center;
+     align-items:center;
+     
+   }
+   .leftView{
+     justify-content:center;
+     width:120;
+   }
+   .rightView{
+     width:120;
+     justify-content:center;
+     align-items:flex-end;
+   }
+   .backImage{
+     width:20;
+     height:36;
+      margin-left:30;
+
+   }
+   .titleName{
+     color:white;
+     font-size:34;
+     font-weight: bold;
+   }
+   .rightImage{
+      width:45;
+     height:45;
+      margin-right:30;
+   }
+   .rightName{
+      color:white;
+      margin-right: 30;
+      font-size: 30;
+   }
+
+</style>
+<script>
+ var hostUrl = require('./host.js').url;
+  module.exports = {
+      data:{
+         host: hostUrl,
+      },
+      methods:{
+     backTaped: function() {
+        var vm = this;
+        var params = {
+          'animated' : 'true',
+        }
+        vm.$call('navigator','pop',params, function () {
+
+        });
+      },
+      rightTitleTaped: function(){
+         this._parent.$emit('rightTitleTaped');
+         //或者：
+         // this.$dispatch('rightTitleTaped');
+      }
+
+      }
+  }
+</script>
+
+
+
+
+
+
+
+

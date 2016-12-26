@@ -71,23 +71,27 @@
         }
     </style>
     <script>
-       var hostUrl = require('./host.js').url;
-        module.exports = {
-            data: {
-               host: hostUrl,
+     var hostUrl = require('./host.js').url;
+     module.exports = {
+        data: {
+         host: hostUrl,
 
-            },
-        }
-    </script>
+     },
+ }
+</script>
 </element>
 
 
 <template>
     <div class="backView">
-        <tab_title name = "我"></tab_title>
-        <head_cell onclick = "headTaped"></head_cell>
-        <common_section sections = {{sections}}></common_section>
-    </div>
+    <tab_title name = "我"></tab_title>
+        <list>
+            <cell>
+              <head_cell onclick = "push"></head_cell>
+              <common_section sections = {{sections}}></common_section>
+          </cell>
+      </list>
+  </div>
 </template>
 
 <style>
@@ -98,29 +102,55 @@
 </style>
 
 <script>
+
+    var hostUrl = require('./host.js').url;
     module.exports = {
         data: {
- sections : [
-    {'array':[
-        {'image':'images/icon0.png','name':'相册'},
-        {'image':'images/icon1.png','name':'收藏'},
-         {'image':'images/icon3.png','name':'钱包'},
-        {'image':'images/icon2.png','name':'卡包'},
-    ]},
-     {'array':[
-        {'image':'images/icon1.png','name':'表情'},
-    ]},
-     {'array':[
-        {'image':'images/icon0.png','name':'设置'},
-    ]}
-    ]
+            host: hostUrl,
+            sections : [
+            {'array':[
+            {'image':'images/icon0.png','name':'相册'},
+            {'image':'images/icon1.png','name':'收藏'},
+            {'image':'images/icon3.png','name':'钱包'},
+            {'image':'images/icon2.png','name':'卡包'},
+            ]},
+            {'array':[
+            {'image':'images/icon1.png','name':'表情'},
+            ]},
+            {'array':[
+            {'image':'images/icon0.png','name':'设置'},
+            ]}
+            ]
         },
 
-     methods:{
-        headTaped:function(){
+        ready: function () {
+             this.$on('comItemTaped', function(e) {
 
-        }
-     }
+             });
+          },
 
-    }
+       methods:{
+           push: function() {
+            var vm = this;
+            var params = {
+              'url': this.host+"grid_view.js",
+              'animated' : 'true',
+          }
+          vm.$call('navigator','push',params, function () {
+
+          });
+      },
+
+      pop: function() {
+        var vm = this;
+        var params = {
+          'animated' : 'true',
+      }
+      vm.$call('navigator','pop',params, function () {
+
+      });
+  },
+}
+
+}
 </script>

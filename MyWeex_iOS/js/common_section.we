@@ -1,7 +1,7 @@
 <element name = "my_row">
 <template>
-  <div class = "rowBackView">
-    <div class = "rowContainer">
+  <div class = "rowBackView" >
+    <div class = "rowContainer" onclick="itemTaped(sid,rid)">
       <image class = "iconImage" src = "{{host + dic.image}}"/>
       <text class = "rowName">{{dic.name}}</text>
       <image class = "arrowImage" src = "{{host + 'images/rightArrow.png'}}"></image>
@@ -47,6 +47,11 @@ var hostUrl = require('./host.js').url;
  module.exports = {
    data:{
       host: hostUrl,
+   },
+   methods:{
+    itemTaped:function(sectionId,rowId){
+          this.$dispatch('comItemTaped',{'sectionId':sectionId,'rowId':rowId});
+    }
    }
  }
 </script>
@@ -57,7 +62,7 @@ var hostUrl = require('./host.js').url;
   <div class = "sessionView">
     <text class = "line"></text>
     <div repeat = "row in section.array">
-      <my_row dic ={{row}} show-line = {{$index==section.array.length-1?false:true}}></my_row>
+      <my_row sid={{sid}} rid = {{$index}} dic ={{row}} show-line = {{$index==section.array.length-1?false:true}}></my_row>
     </div>
     <text class = "line"></text>
   </div>
@@ -87,7 +92,7 @@ var hostUrl = require('./host.js').url;
 <template>
   <div>
     <div repeat = "section in sections">
-       <my_section section = {{section}}></my_section>
+       <my_section sid = {{$index}} section = {{section}}></my_section>
     </div>
   </div>
 </template>

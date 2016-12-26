@@ -1,0 +1,105 @@
+<element name = "my_item">
+  <template>
+    <div class = "container" onclick="itemTaped">
+      <image class = "image" src = "{{host + item.image}}"/>
+      <text class ="name">{{item.name}}</text>
+    </div>
+  </template>
+  <style>
+    .container{
+      width:250;
+      align-items:center;
+    }
+    .name{
+      margin-top:20;
+      margin-bottom: 8;
+    }
+    .image{
+      resize: cover;
+      width:230;
+      height:230;
+      margin-top:20;
+    }
+  </style>
+  <script>
+    var hostUrl = require('./host.js').url
+    module.exports = {
+     data: {
+      host : hostUrl,
+    },
+    methods:{
+      itemTaped:function(){
+         var vm = this;
+        var params = {
+          'url': this.host+"grid_view.js",
+          'animated' : 'true',
+        }
+        vm.$call('navigator','push',params, function () {
+
+        });
+      }
+    }
+  }
+</script>
+</element>
+
+<template>
+	<div>
+		<back_title name = "Grid View" right-name = "保存" ></back_title>
+   <scroller class= "scroller" onloadmore="onloadmore" loadmoreoffset="100">
+        <div class = "container">
+          <my_item repeat="item in items" item = {{item}}></my_item>
+        </div>
+   </scroller>
+ </div>
+</template>
+<style>
+  .container{
+   flex-direction: row;
+   flex-wrap: wrap;
+ }
+
+</style>
+<script>
+
+	module.exports = {
+   data:{
+    items: [],
+    counter: "sss",
+  },
+
+  ready: function () {
+             //导航右边按钮点击事件
+             this.$on('rightTitleTaped', function() {
+
+             });
+
+             for (var i = 0; i < 20; i++) {
+              this.items.push(
+              {
+                'name':'阿贵'+i,
+                'image':'images/tmp.png'
+              }
+              );
+            }
+          },
+          methods:{
+            onloadmore:function(){
+              if (!this.triggered) {
+                 var count = this.items.length;
+
+                for (var i = count; i < count+20; i++) {
+                 this.items.push({
+                'name':'阿贵'+i,
+                'image':'images/tmp.png'}
+              );
+                }
+              }
+              this.triggered = true;
+            }
+          },
+  
+        }
+      </script>
+
+

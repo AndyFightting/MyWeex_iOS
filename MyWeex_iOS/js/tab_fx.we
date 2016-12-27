@@ -20,7 +20,7 @@
 <script>
     module.exports = {
         data: {
-            titleName: "发现s",
+            titleName: "发现",
            sections : [
            {'array':[
            {'image':'images/icon0.png','name':'朋友圈'},

@@ -1,25 +1,301 @@
-<template>
-    <div>
-        <tab_title name="通讯录"/>
+<element name = "menu_bt">
+  <template>
+    <div class = "backView">
+      <image class = "imageView" src = "{{host + image}}"></image>
+      <text class = "name">{{name}}</text>
 
     </div>
-</template>
-
-<style>
-    .backView {
-        height:150;
-        background-color:red;
-    }
-    .text {
-        font-size: 50;
-        margin-top:100;
-    }
+  </template>
+  <style>
+   .backView{
+     width:120;
+     align-items:center;
+   }
+   .imageView{
+     width:80;
+     height:80;
+   }
+   .name{
+    font-size: 24;
+    margin-top:10;
+    margin-bottom: 20;
+    color: gray;
+  }
 </style>
-
 <script>
-    module.exports = {
-        data: {
-            text: 'Hello World.'
-        }
-    }
+  var hostUrl = require('./host.js').url;
+  module.exports = {
+    data:{
+     host: hostUrl,
+   },
+ }
 </script>
+</element>
+
+
+<element name = "title_view">
+  <template>
+    <div class = "backView">
+      <div class = "container">
+      <text style="color: white;font-weight: bold;font-size: 40;margin-left:15;margin-right: 15">天猫</text>
+        <div class = "inputBackView">
+          <image class = "searchImage" src="{{host + 'images/header2.png'}}"></image>
+          <input class = "inputView" placeholder="冬季美靴穿起来"></imput>
+          <image class = "voiceImage" src="{{host + 'images/header3.png'}}"></image>
+        </div>
+        <image class = "saoImage"  src="{{host + 'images/header1.png'}}"></image>
+      </div>
+    </div>
+  </template>
+  <style>
+    .backView {
+      justify-content:flex-end;
+      height:120;
+      background-color:#fb0628;
+    }
+    .container{
+      flex-direction:row;
+      align-items:center;
+      height:90;
+    }
+    .inputBackView{
+      flex:1;
+      flex-direction:row;
+      align-items:center;
+      background-color:white;
+      height:60;
+      border-radius:3;
+      
+    }
+    .searchImage{
+      width:35;
+      height:35;
+      margin-left:20;
+      margin-right:20;
+
+    }
+    .iconImage{
+      margin-left:20;
+      margin-right:20;
+      width:100;
+      height:40;
+    }
+    .saoImage{
+      margin-right:20;
+      margin-left:20;
+      width:45;
+      height:45;
+    }
+    .voiceImage{
+     width:30;
+     height:40;
+     margin-left:20;
+     margin-right:20;
+
+   }
+   .inputView{
+    flex:1;
+    font-size: 26;
+  }    
+</style>
+<script>
+ var hostUrl = require('./host.js').url;
+ module.exports = {
+  data: {
+    host: hostUrl,
+  }
+}
+</script>
+</element>
+
+<element name="my_slider">
+  <template>
+    <div>
+      <slider class="slider" interval="3000" auto-play="true">
+        <div class="slider-pages" repeat="item in itemList">
+          <image class="img" resize = "cover" src="{{host + item.pictureUrl}}"></image>
+        </div>
+        <indicator class="indicator"></indicator>
+      </slider>
+    </div>
+  </template>
+
+  <style>
+    .img {
+      width: 750;
+      height: 270;
+    }
+    .title {
+      position: absolute;
+      top: 20;
+      left: 20;
+      color: #ff0000;
+      font-size: 48;
+      font-weight: bold;
+      background-color: #eeeeee;
+    }
+    .slider {
+      flex-direction: row;
+      width: 750;
+      height: 270;
+    }
+    .slider-pages {
+      flex-direction: row;
+      width: 750;
+      height: 270;
+    }
+    .indicator {
+      width:750;
+      height:30;
+      top:230;
+      position:absolute;
+      item-color: white;
+      item-selectedColor: red;
+      item-size: 16;
+    }
+  </style>
+
+  <script>
+    var hostUrl = require('./host.js').url;
+
+    module.exports = {
+      data: {
+        host: hostUrl,
+        itemList: [
+        {itemId: '1', pictureUrl: 'images/2.jpg'},
+        {itemId: '2', pictureUrl: 'images/3.jpg'},
+        {itemId: '3', pictureUrl: 'images/4.jpg'}
+        ],
+      }
+    }
+  </script>
+</element>
+
+<element name = "cell_title">
+  <template>
+  <div class = "titleBackView">
+    <image class = "line" style="background-color:{{color}}"></image>
+    <image class = "icon" src = "{{host + image}}"></image>
+    <image class = "line" style="background-color:{{color}}" ></image>
+  </div>
+</template>
+<style>
+  .titleBackView{
+    flex-direction:row;
+    justify-content:center;
+    align-items:center;
+    background-color:#eeeeee;
+    height:60;
+  }
+  .line{
+    height:3;
+    width:60;
+  }
+  .icon{
+    width:50;
+    height:50;
+    background-color:purple;
+    margin-left:20;
+    margin-right:20;
+  }
+  
+</style>
+<script>
+  var hostUrl = require('./host.js').url;
+  module.exports={
+    data:{
+       host: hostUrl,
+    },
+  }
+
+</script>
+</element>
+
+
+<template>
+  <div>
+    <title_view></title_view>
+   
+   <list>
+      <cell >
+      <my_slider></my_slider>
+       <div class = "menuDiv">
+            <menu_bt name = "充话费" image = "images/icon4.png"></menu_bt>
+            <menu_bt name = "看电影" image = "images/icon5.png"></menu_bt>
+            <menu_bt name = "应用" image = "images/icon6.png"></menu_bt>
+            <menu_bt name = "豆瓣" image = "images/icon7.png"></menu_bt>
+            <menu_bt name = "关注" image = "images/icon8.png"></menu_bt>
+          </div>
+          <div class = "menuDiv">
+            <menu_bt name = "订单" image = "images/icon9.png"></menu_bt>
+            <menu_bt name = "投资" image = "images/icon10.png"></menu_bt>
+            <menu_bt name = "游戏" image = "images/icon11.png"></menu_bt>
+            <menu_bt name = "电视剧" image = "images/icon5.png"></menu_bt>
+            <menu_bt name = "充值" image = "images/icon4.png"></menu_bt>
+            </div>
+      </cell>
+      <cell class = "cell">
+        <cell_title color = "#f3b4b4" image = "images/f_03.png"></cell_title>
+        <div class = "cellDiv">
+           <image class = "image4" src = "{{host + 'images/ssf_03.png'}}"/>
+           <image class = "image4" src = "{{host + 'images/ssf_05.png'}}"/>
+           <image class = "image4" src = "{{host + 'images/ssf_07.png'}}"/>
+           <image class = "image4" src = "{{host + 'images/ssf_09.png'}}"/>
+        </div>
+      </cell>
+      <cell class = "cell">
+        <cell_title color = "#ccd9ec" image = "images/f_07.png"></cell_title>
+        <div class = "cellDiv">
+           <image class = "image3" src = "{{host + 'images/ssf_15.png'}}"/>
+           <image class = "image3" src = "{{host + 'images/ssf_17.png'}}"/>
+           <image class = "image3" src = "{{host + 'images/ssf_19.png'}}"/>
+        </div>
+      </cell>
+
+</list>
+
+  </div>
+</template>
+<style>
+ .menuDiv{
+  flex-direction: row;
+  justify-content: space-between;
+  padding-left: 20;
+  padding-right: 20;
+  margin-top: 20;
+}
+.image4{
+  width:186;
+  height:283;
+}
+.image3{
+  width:248;
+  height:316;
+}
+.cell{
+  background-color:#eeeeee;
+}
+.cellDiv{
+  flex-direction: row;
+  justify-content: space-between;
+}
+</style>
+<script>
+  var hostUrl = require('./host.js').url;
+  module.exports={
+    data:{
+       host: hostUrl,
+    },
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+

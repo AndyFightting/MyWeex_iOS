@@ -21,7 +21,7 @@
             tabItems: [
                 {
                     index: 0,
-                    title: '微信ffssss',
+                    title: '微信',
                     titleColor: '#000000',
                     icon: '',
                     image: host+'images/wx0.png',

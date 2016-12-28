@@ -3,7 +3,8 @@
   <div class = "rowBackView" >
     <div class = "rowContainer" onclick="itemTaped(sid,rid)">
       <image class = "iconImage" src = "{{host + dic.image}}"/>
-      <text class = "rowName">{{dic.name}}</text>
+      <text class = "rowName">{{dic.name}} </text>
+      <text>sId = {{sid}} rId = {{rid}}</text>
       <image class = "arrowImage" src = "{{host + 'images/rightArrow.png'}}"></image>
     </div>
     <text if= {{showLine}} class = "line"></text>

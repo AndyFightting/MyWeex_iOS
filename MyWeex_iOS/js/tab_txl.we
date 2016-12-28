@@ -194,7 +194,6 @@
   .icon{
     width:50;
     height:50;
-    background-color:purple;
     margin-left:20;
     margin-right:20;
   }

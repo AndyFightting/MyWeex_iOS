@@ -1,131 +1,170 @@
 <element name = "menu_wx">
-<template>
-  <div class = "backView">
-    <div class = "container">
-      <image class = "image" src = "{{host + image}}"></image>
-      <text>{{name}}</text>
-    </div>
-    <text class = "line">
-  </div>
-</template>
-<style>
-  .container{
-    align-items:center;
-    flex-direction:row;
-    height:90;
-    background-color:white;
-  }
-  .line{
-    height:2;
-    background-color:#eeeeee;
-  }
-  .image{
-    width:60;
-    height:60;
-    margin-left:20;
-    margin-right:20;
-  }
-</style>	
-<script>
-  var hostUrl = require('./host.js').url;
-  module.exports={
-    data:{
-       host: hostUrl,
-    }
-  }
-</script>
-</element>
-
-<element name = "my_cell">
   <template>
-  <div class = "backView">
-    <div class = "container">
-      <image class = "image" resize = "cover" src = "{{host + 'images/tmp.png'}}"></image>
-      <div class = "innerDiv">
-        <text class = "name">阿贵</text>
-        <text class = "detail">市领导反馈数量的开发建设了</text>
+    <div class = "backView">
+      <div class = "container">
+        <image class = "image" src = "{{host + image}}"></image>
+        <text>{{name}}</text>
       </div>
-      <image class ="arrowImage" src = "{{host + 'images/rightArrow.png'}}"></image>
+      <text class = "line">
+      </div>
+    </template>
+    <style>
+      .container{
+        align-items:center;
+        flex-direction:row;
+        height:90;
+        background-color:white;
+      }
+      .line{
+        height:2;
+        background-color:#eeeeee;
+      }
+      .image{
+        width:60;
+        height:60;
+        margin-left:20;
+        margin-right:20;
+      }
+    </style>	
+    <script>
+      var hostUrl = require('./host.js').url;
+      module.exports={
+        data:{
+         host: hostUrl,
+       }
+     }
+   </script>
+ </element>
+
+ <element name = "my_cell">
+  <template>
+    <div>
+      
+      <div class = "titleDiv">
+        <text class = "titleName">{{title}}</text>
+      </div>
+
+    <div class = "backView" repeat = "row in array">
+      <div class = "container">
+        <image class = "image" resize = "cover" src = "{{host + row.image}}"></image>
+        <div class = "innerDiv">
+          <text class = "name">{{row.name + $index}}</text>
+          <text class = "detail">hello world</text>
+        </div>
+        <image class ="arrowImage" src = "{{host + 'images/rightArrow.png'}}"></image>
+      </div>
+      <text class = "line">
+      </div>
+
     </div>
-    <text class = "line">
-  </div>
-</template>
-<style>
-  .container{
-    align-items:center;
-    flex-direction:row;
-    height:100;
-    background-color:white;
-  }
-  .line{
-    height:2;
-    background-color:#eeeeee;
-  }
-  .image{
-    width:65;
-    height:65;
-    margin-left:20;
-    margin-right:20;
-  }
-  .innerDiv{
-    flex:1;
-  }
-  .arrowImage{
-     width:32;
-    height:32;
-    margin-right:30;
-  }
-  .name{
-     font-size: 28;
-  }
-  .detail{
-     margin-top: 10;
-     font-size: 25;
-     color: gray;
+    </template>
+    <style>
+    .titleDiv{
+      justify-content: center;
+      height:40;
+      background-color: #eeeeee;
+    }
+    .titleName{
+      font-size: 26;
+      margin-left: 20;
+    }
+      .container{
+        align-items:center;
+        flex-direction:row;
+        height:100;
+        background-color:white;
+      }
+      .line{
+        height:2;
+        background-color:#eeeeee;
+      }
+      .image{
+        width:65;
+        height:65;
+        margin-left:20;
+        margin-right:20;
+      }
+      .innerDiv{
+        flex:1;
+      }
+      .arrowImage{
+       width:32;
+       height:32;
+       margin-right:30;
+     }
+     .name{
+       font-size: 28;
+     }
+     .detail{
+       margin-top: 10;
+       font-size: 25;
+       color: gray;
 
-  }
+     }
 
-</style>
-<script>
- var hostUrl = require('./host.js').url;
- module.exports = {
-   data:{
-     host: hostUrl,
-   },
- }
-</script>
-</element>
+   </style>
+   <script>
+     var hostUrl = require('./host.js').url;
+     module.exports = {
+       data:{
+        rows:[],
+         host: hostUrl,
+       },
+       ready:function(){
+      var tst = [];
+      for(var i=0; i<6; i++){
+        this.rows.push(22);
+      }
+    },
+     }
+   </script>
+ </element>
 
 
-<template>
+ <template>
   <div>
-   
-   <div repeat = "row in rows">
-     <div if ="$index == 0">
-         <tab_title name="微信"></tab_title>
-  <menu_wx name = "新朋友" image = "images/icon0.png"></menu_wx>
-  <menu_wx name = "群聊" image = "images/icon1.png"></menu_wx>
-  <menu_wx name = "标签" image = "images/icon2.png"></menu_wx>
-  <menu_wx name = "公众号" image = "images/icon3.png"></menu_wx>
+  <tab_title name="微信"></tab_title>
+   <list>
+     <cell repeat = "row in rows">
+        <div if ="$index == 0">
+       <menu_wx name = "新朋友" image = "images/icon0.png"></menu_wx>
+       <menu_wx name = "群聊" image = "images/icon1.png"></menu_wx>
+       <menu_wx name = "标签" image = "images/icon2.png"></menu_wx>
+       <menu_wx name = "公众号" image = "images/icon3.png"></menu_wx>
      </div>
-     
-     <my_cell if = "$index != 0"></my_cell>   
-
-     
-   </div>
-  </div>
+      <my_cell if = "$index != 0" title = {{row.title}} array = {{row.array}}></my_cell> 
+     </cell>
+   </list>
+ </div>
 </template>
 <script>
   module.exports = {
     data:{
-      rows:[],
-    },
-
-  ready:function(){
-      var tst = [];
-      for(var i=0; i<6; i++){
-        this.rows.push(22);
-       }
+      rows:[
+        'header',
+        { 'title':'A',
+          'array':[
+          {'image':'images/tmp.png','name':'阿贵'},
+        ]},
+         {'title':'B',
+          'array':[
+          {'image':'images/icon1.png','name':'阿贵'},
+          {'image':'images/icon0.png','name':'阿贵'},
+        ]},  
+         {'title':'C',
+          'array':[
+          {'image':'images/icon3.png','name':'阿贵'},
+          {'image':'images/icon4.png','name':'阿贵'},
+          {'image':'images/icon5.png','name':'阿贵'},
+        ]},
+         {'title':'D',
+          'array':[
+          {'image':'images/icon6.png','name':'阿贵'},
+          {'image':'images/icon7.png','name':'阿贵'},
+          {'image':'images/icon8.png','name':'阿贵'},
+          {'image':'images/icon9.png','name':'阿贵'},
+        ]},
+      ],
     },
   }
 </script>

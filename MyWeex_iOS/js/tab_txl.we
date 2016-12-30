@@ -96,6 +96,7 @@
    .inputView{
     flex:1;
     font-size: 26;
+    height:35;
   }    
 </style>
 <script>
@@ -146,8 +147,9 @@
     }
     .indicator {
       width:750;
-      height:30;
+      height: 30;
       top:230;
+      left:1;
       position:absolute;
       item-color: white;
       item-selectedColor: red;

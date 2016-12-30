@@ -9,7 +9,8 @@
 #import "AppDelegate.h"
 #import "ViewController.h"
 #import "WXImgLoaderDefaultImpl.h"
-
+#import "MyComponent.h"
+#import "MyModule.h"
 
 @interface AppDelegate ()
 @end
@@ -22,7 +23,10 @@
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
 
     [WXSDKEngine initSDKEnviroment];
+    
     [WXSDKEngine registerHandler:[WXImgLoaderDefaultImpl new] withProtocol:@protocol(WXImgLoaderProtocol)];
+    [WXSDKEngine registerComponent:@"my_view" withClass:[MyComponent class]];
+    [WXSDKEngine registerModule:@"my_module" withClass:[MyModule class]];//we 要引用 var eventModule = require('@weex-module/my_module');
     
     UINavigationController* nav = [[UINavigationController alloc]initWithRootViewController:[[ViewController alloc] init]];
     [nav.view sendSubviewToBack:nav.navigationBar]; //隐藏导航栏且不影响手势返回

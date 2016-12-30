@@ -7,7 +7,6 @@
 //
 
 #import "WXImgLoaderDefaultImpl.h"
-#import <SDWebImage/UIImageView+WebCache.h>
 
 #define MIN_IMAGE_WIDTH 36
 #define MIN_IMAGE_HEIGHT 36

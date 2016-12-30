@@ -10,6 +10,10 @@
 		0F67617423642C4DB8BAB31E /* libPods-MyWeex_iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B38DA85F2C1A9FA5535A1E4 /* libPods-MyWeex_iOS.a */; };
 		76139A521E0E677A009B69BC /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 76139A511E0E677A009B69BC /* Info.plist */; };
 		76139A551E0E691A009B69BC /* WXImgLoaderDefaultImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = 76139A541E0E691A009B69BC /* WXImgLoaderDefaultImpl.m */; };
+		76381A671E15EDDB00D107CC /* MyComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = 76381A661E15EDDB00D107CC /* MyComponent.m */; };
+		76381A6A1E15FDAE00D107CC /* MyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 76381A691E15FDAE00D107CC /* MyView.m */; };
+		76381A6C1E15FE8D00D107CC /* MyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76381A6B1E15FE8D00D107CC /* MyView.xib */; };
+		76381A6F1E1612AE00D107CC /* MyModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 76381A6E1E1612AE00D107CC /* MyModule.m */; };
 		76935D5D1E0A8BA700EF08C5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 76935D5C1E0A8BA700EF08C5 /* main.m */; };
 		76935D601E0A8BA700EF08C5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 76935D5F1E0A8BA700EF08C5 /* AppDelegate.m */; };
 		76935D681E0A8BA700EF08C5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 76935D671E0A8BA700EF08C5 /* Assets.xcassets */; };
@@ -30,6 +34,13 @@
 		76139A531E0E691A009B69BC /* WXImgLoaderDefaultImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXImgLoaderDefaultImpl.h; sourceTree = "<group>"; };
 		76139A541E0E691A009B69BC /* WXImgLoaderDefaultImpl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXImgLoaderDefaultImpl.m; sourceTree = "<group>"; };
 		76139A561E0E6FD9009B69BC /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		76381A651E15EDDB00D107CC /* MyComponent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyComponent.h; sourceTree = "<group>"; };
+		76381A661E15EDDB00D107CC /* MyComponent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyComponent.m; sourceTree = "<group>"; };
+		76381A681E15FDAE00D107CC /* MyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyView.h; sourceTree = "<group>"; };
+		76381A691E15FDAE00D107CC /* MyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyView.m; sourceTree = "<group>"; };
+		76381A6B1E15FE8D00D107CC /* MyView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyView.xib; sourceTree = "<group>"; };
+		76381A6D1E1612AE00D107CC /* MyModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyModule.h; sourceTree = "<group>"; };
+		76381A6E1E1612AE00D107CC /* MyModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyModule.m; sourceTree = "<group>"; };
 		76935D581E0A8BA700EF08C5 /* MyWeex_iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyWeex_iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		76935D5C1E0A8BA700EF08C5 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		76935D5E1E0A8BA700EF08C5 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -75,6 +86,22 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		76381A641E15EBEC00D107CC /* extends */ = {
+			isa = PBXGroup;
+			children = (
+				76139A531E0E691A009B69BC /* WXImgLoaderDefaultImpl.h */,
+				76139A541E0E691A009B69BC /* WXImgLoaderDefaultImpl.m */,
+				76381A651E15EDDB00D107CC /* MyComponent.h */,
+				76381A661E15EDDB00D107CC /* MyComponent.m */,
+				76381A681E15FDAE00D107CC /* MyView.h */,
+				76381A691E15FDAE00D107CC /* MyView.m */,
+				76381A6B1E15FE8D00D107CC /* MyView.xib */,
+				76381A6D1E1612AE00D107CC /* MyModule.h */,
+				76381A6E1E1612AE00D107CC /* MyModule.m */,
+			);
+			name = extends;
+			sourceTree = "<group>";
+		};
 		76935D4F1E0A8BA700EF08C5 = {
 			isa = PBXGroup;
 			children = (
@@ -96,10 +123,9 @@
 		76935D5A1E0A8BA700EF08C5 /* MyWeex_iOS */ = {
 			isa = PBXGroup;
 			children = (
+				76381A641E15EBEC00D107CC /* extends */,
 				76935D7D1E0A8EB200EF08C5 /* ViewController.h */,
 				76935D7E1E0A8EB200EF08C5 /* ViewController.m */,
-				76139A531E0E691A009B69BC /* WXImgLoaderDefaultImpl.h */,
-				76139A541E0E691A009B69BC /* WXImgLoaderDefaultImpl.m */,
 				76935D5E1E0A8BA700EF08C5 /* AppDelegate.h */,
 				76935D5F1E0A8BA700EF08C5 /* AppDelegate.m */,
 				76935D671E0A8BA700EF08C5 /* Assets.xcassets */,
@@ -190,6 +216,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				76381A6C1E15FE8D00D107CC /* MyView.xib in Resources */,
 				76935D6B1E0A8BA700EF08C5 /* LaunchScreen.storyboard in Resources */,
 				76935D681E0A8BA700EF08C5 /* Assets.xcassets in Resources */,
 				76139A521E0E677A009B69BC /* Info.plist in Resources */,
@@ -251,7 +278,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				76381A671E15EDDB00D107CC /* MyComponent.m in Sources */,
 				76935D7F1E0A8EB200EF08C5 /* ViewController.m in Sources */,
+				76381A6A1E15FDAE00D107CC /* MyView.m in Sources */,
+				76381A6F1E1612AE00D107CC /* MyModule.m in Sources */,
 				76139A551E0E691A009B69BC /* WXImgLoaderDefaultImpl.m in Sources */,
 				76935D601E0A8BA700EF08C5 /* AppDelegate.m in Sources */,
 				76935D5D1E0A8BA700EF08C5 /* main.m in Sources */,

@@ -1,0 +1,14 @@
+<template>
+  <div>
+  <back_title name = "iOS Native View"></back_title>
+  <my_view title="这是We传进来的" src="{{host + 'images/tmp.png'}}"  style = "flex:1"></my_view>
+</div>
+</template>
+<script>
+ var hostUrl = require('./host.js').url;
+  module.exports = {
+     data:{
+       host: hostUrl,
+     },
+  }
+</script>

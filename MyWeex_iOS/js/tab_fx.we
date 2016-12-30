@@ -1,48 +1,119 @@
 <template>
-    <div class = "backView">
-        <tab_title name={{titleName}}></tab_title>
+  <div class = "backView">
+    <tab_title name={{titleName}}></tab_title>
 
-        <!-- 因为用scroller包装没有弹性，所以用list和cell -->
-        <list>
-            <cell>
-             <common_section sections = {{sections}}></common_section> 
-         </cell>
-     </list>
+    <!-- 因为用scroller包装没有弹性，所以用list和cell -->
+    <list>
+      <cell>
+       <common_section sections = {{sections}}></common_section> 
+     </cell>
+   </list>
  </div>
 </template>
 
 <style>
  .backView{
-    background-color:#efeff4;
+  background-color:#efeff4;
 }
 </style>
 
 <script>
-    module.exports = {
-        data: {
-            titleName: "发现",
-           sections : [
-           {'array':[
-           {'image':'images/icon0.png','name':'朋友圈'},
-           ]},
-           {'array':[
-           {'image':'images/icon1.png','name':'扫一扫'},
-           {'image':'images/icon3.png','name':'摇一摇'},
-           ]},
-           {'array':[
-           {'image':'images/icon2.png','name':'附近的人'},
-           {'image':'images/icon0.png','name':'漂流瓶'},
-           ]},
-           {'array':[
-           {'image':'images/icon1.png','name':'购物'},
-           {'image':'images/icon3.png','name':'游戏'},
-           ]}
-           ]
-       },
-       ready: function () {
-             this.$on('comItemTaped', function(e) {
-                  this.titleName = e.detail.sectionId+'发现' + e.detail.rowId;
-             });
-          },
-   }
+
+ var myModal = require('@weex-module/my_module');
+ var modal = require('@weex-module/modal');
+var hostUrl = require('./host.js').url;
+ module.exports = {
+  data: {
+    titleName: "发现",
+    host: hostUrl,
+    sections : [
+    {'array':[
+    {'image':'images/icon0.png','name':'朋友圈'},
+    ]},
+    {'array':[
+    {'image':'images/icon1.png','name':'扫一扫'},
+    {'image':'images/icon3.png','name':'摇一摇'},
+    ]},
+    {'array':[
+    {'image':'images/icon2.png','name':'附近的人'},
+    {'image':'images/icon0.png','name':'漂流瓶'},
+    ]},
+    {'array':[
+    {'image':'images/icon1.png','name':'购物'},
+    {'image':'images/icon3.png','name':'游戏'},
+    ]}
+    ]
+  },
+
+  methods: {
+     push: function(jsName) {
+      var vm = this;
+      var params = {
+        'url': this.host+ jsName,
+        'animated' : 'true',
+      }
+      vm.$call('navigator','push',params, function () {
+
+      });
+    },
+
+    showToast: function (e) {
+      modal.toast({
+        'message': "点击" + e.detail.sectionId +"------"+e.detail.rowId,
+        'duration': 1
+      });
+    },
+
+    showAlert: function (e) {
+      var self = this;
+      modal.alert({
+        'message': "点击" + e.detail.sectionId +"------"+e.detail.rowId,
+        'okTitle': '确定'
+      }, function (result) {
+
+      });
+    },
+
+    showConfirm: function (e) {
+      var self = this;
+      modal.confirm({
+        'message':  "点击" + e.detail.sectionId +"------"+e.detail.rowId,
+        'okTitle': '确定',
+        'cancelTitle': '取消'
+      }, function (e) {
+
+      });
+    },
+
+    showPrompt: function () {
+      var self = this;
+      modal.prompt({
+        'message': '请输入密码！',
+        'okTitle' : '确定',
+        'cancelTitle' : '取消'
+      }, function (e) {
+          // self.params = JSON.stringify(e)
+        });
+    },
+  },
+
+  ready: function () {
+    var vm = this;
+    vm.$on('comItemTaped', function(e) {
+                  // vm.showToast(e);
+                  // vm.showAlert(e);
+                  // vm.showConfirm(e);
+                  // vm.showPrompt();
+        
+                  // myModal.showAlert('Native Module'+e.detail.sectionId+'---'+e.detail.rowId,
+                  //  function(msg){
+                  //   vm.titleName = msg.msg;
+                  // });
+                
+                vm.titleName = e.detail.sectionId+'发现' + e.detail.rowId;
+                vm.push('native_view.js');
+
+                });
+  },
+}
 </script>

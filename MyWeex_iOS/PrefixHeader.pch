@@ -9,6 +9,11 @@
 #ifndef PrefixHeader_pch
 #define PrefixHeader_pch
 
+#import <SDWebImage/UIImageView+WebCache.h>
+#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
+#import <WeexSDK/WeexSDK.h>
+
 #define IP_ADDRESS @"192.168.12.110"
 #define HOST [NSString stringWithFormat:@"http://%@:8081/weex_tmp/h5_render/",IP_ADDRESS]
 
